@@ -25,6 +25,9 @@ def home():
 @app.get("/transactions")
 def get_transactions():
     return transactions
+@app.get("/budgets")
+def get_budgets():
+    return budgets
 
 @app.post("/transactions")
 def add_transaction(transaction: Transaction):
@@ -74,7 +77,8 @@ def get_summary():
         "total_expenses" : total_expenses,
         "total_savings" : total_savings,
         "remaining_balance" : remaining_balance,
-        "last_updated" : last_updated
+        "last_updated" : last_updated,
+        "budgets" : get_budget_status
     }
 
 
@@ -93,3 +97,33 @@ def get_spending_by_category():
             else:
                 category_totals[category] = amount
     return category_totals
+@app.get("/budget-status")
+def get_budget_status():
+    spending_by_category = {}
+
+
+    for transaction in transactions:
+        if transaction["type"] == "expense":
+            category = transaction["category"]
+            amount = transaction["amount"]
+            
+            if catergory in spending_by_category:
+                spending_by_category += amount
+            
+            else:
+                spending_by_category = amount
+
+    budget_status = {}
+
+    for category in budgets:
+        limit = budgets[category]
+        spent = spending_by_category.get(category,0)
+        remaining = limit - spent
+
+        budget_status[category] = {
+            "budget" : limit,
+            "spend" : spent,
+            "remaning" : remaining,
+            "over_budget" : spent > limit
+        }
+    return budget_status
