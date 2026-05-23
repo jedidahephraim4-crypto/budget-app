@@ -1,0 +1,103 @@
+{
+    "transactions": [
+        {
+            "amount": 20.0,
+            "category": "food",
+            "type": "income",
+            "id": "776a7de9-b699-40a5-989a-8886adb233e5",
+            "date": "2026-05-19"
+        },
+        {
+            "amount": 50.0,
+            "category": "",
+            "type": "expense",
+            "id": "44c58228-fbfc-4eea-bcee-e88b710a252b",
+            "date": "2026-05-21"
+        },
+        {
+            "amount": 500.0,
+            "category": "expense",
+            "type": "expense",
+            "id": "08d4c24a-f03e-45f6-bdb6-5fb3db4b42b9",
+            "date": "2026-05-21"
+        },
+        {
+            "amount": 500.0,
+            "category": "expense",
+            "type": "income",
+            "id": "71ae2c28-3568-426c-9a95-c469161f94a3",
+            "date": "2026-05-21"
+        },
+        {
+            "amount": 432.0,
+            "category": "",
+            "type": "expense",
+            "id": "ce66b721-1f78-4325-82ba-ab17586b2797",
+            "date": "2026-05-21"
+        },
+        {
+            "amount": 432.0,
+            "category": "Food",
+            "type": "expense",
+            "id": "3018e62b-1bf7-44b2-b03e-3b624fce2b89",
+            "date": "2026-05-21"
+        },
+        {
+            "amount": 20.0,
+            "category": "Life",
+            "type": "income",
+            "id": "895b4062-83aa-4957-84f3-1ac4ba903f99",
+            "date": "2026-05-22"
+        },
+        {
+            "amount": 100.0,
+            "category": "Phone",
+            "type": "savings",
+            "id": "be4a9036-f9fe-4ef5-a37a-c125de79b5d4",
+            "date": "2026-05-22"
+        },
+        {
+            "amount": 150.0,
+            "category": "Life",
+            "type": "income",
+            "id": "3bd9818e-68fc-4bc1-b8c4-1067ced87afb",
+            "date": "2026-05-22"
+        },
+        {
+            "amount": 100000.0,
+            "category": "Food",
+            "type": "income",
+            "id": "74021424-9c25-4bd1-8d27-d4bb2b76e980",
+            "date": "2026-05-22"
+        },
+        {
+            "amount": 20.0,
+            "category": "Gas",
+            "type": "expense",
+            "id": "b2dc30fc-c480-46ab-8c6c-51f9960e85d0",
+            "date": "2026-05-22"
+        },
+        {
+            "amount": 50.0,
+            "category": "food",
+            "type": "expense",
+            "id": "07cd71bb-2a7d-4a27-affb-11ac465bda47",
+            "date": "2026-05-22"
+        },
+        {
+            "amount": 25000.0,
+            "category": "Phone Bill",
+            "type": "savings",
+            "id": "6144c7db-4478-4ca1-9a0b-c782c2953c8e",
+            "date": "2026-05-23"
+        },
+        {
+            "amount": 3.0,
+            "category": "food",
+            "type": "expense",
+            "id": "b0db9880-87c5-48c4-b243-3d77edd93737",
+            "date": "2026-05-23"
+        }
+    ],
+    "budgets": {}
+}
