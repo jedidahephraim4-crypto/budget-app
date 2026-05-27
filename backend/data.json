@@ -1,32 +1,11 @@
 {
     "transactions": [
         {
-            "amount": 20.0,
-            "category": "food",
-            "type": "income",
-            "id": "776a7de9-b699-40a5-989a-8886adb233e5",
-            "date": "2026-05-19"
-        },
-        {
-            "amount": 50.0,
-            "category": "",
-            "type": "expense",
-            "id": "44c58228-fbfc-4eea-bcee-e88b710a252b",
-            "date": "2026-05-21"
-        },
-        {
-            "amount": 500.0,
-            "category": "expense",
-            "type": "expense",
-            "id": "08d4c24a-f03e-45f6-bdb6-5fb3db4b42b9",
-            "date": "2026-05-21"
-        },
-        {
-            "amount": 500.0,
+            "amount": 50000.0,
             "category": "expense",
             "type": "income",
             "id": "71ae2c28-3568-426c-9a95-c469161f94a3",
-            "date": "2026-05-21"
+            "date": "2026-05-25"
         },
         {
             "amount": 432.0,
@@ -43,13 +22,6 @@
             "date": "2026-05-21"
         },
         {
-            "amount": 20.0,
-            "category": "Life",
-            "type": "income",
-            "id": "895b4062-83aa-4957-84f3-1ac4ba903f99",
-            "date": "2026-05-22"
-        },
-        {
             "amount": 100.0,
             "category": "Phone",
             "type": "savings",
@@ -61,13 +33,6 @@
             "category": "Life",
             "type": "income",
             "id": "3bd9818e-68fc-4bc1-b8c4-1067ced87afb",
-            "date": "2026-05-22"
-        },
-        {
-            "amount": 100000.0,
-            "category": "Food",
-            "type": "income",
-            "id": "74021424-9c25-4bd1-8d27-d4bb2b76e980",
             "date": "2026-05-22"
         },
         {
@@ -97,7 +62,17 @@
             "type": "expense",
             "id": "b0db9880-87c5-48c4-b243-3d77edd93737",
             "date": "2026-05-23"
+        },
+        {
+            "amount": 2.0,
+            "category": "Life",
+            "type": "expense",
+            "id": "47a42dbc-4236-4c04-bea8-acfbbbd94431",
+            "date": "2026-05-25"
         }
     ],
-    "budgets": {}
+    "budgets": {
+        "60": 0.0,
+        "Food": 50.0
+    }
 }

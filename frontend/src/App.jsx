@@ -6,8 +6,19 @@ function App(){
   const[category, setCategory] = useState("");
   const[type, setType] = useState("expense");
   const[transactions, setTransactions] = useState([]);
+  const[editingId, setEditingId] = useState(null);
+  const[isEditing, setIsEditing] = useState(false);
+  const[budgetCategory, setBudgetCategory] = useState("");
+  const[budgetLimit , setBudgetLimit] = useState("");
+  const[budgetStatus, setBudgetStatus] = useState({});
 
-
+  const fetchBudgetStatus = () => {
+    fetch("http://127.0.0.1:8001/budget-status")
+    .then((response) => response.json())
+    .then((data) => {
+      setBudgetStatus(data)
+    });
+  };
   const fetchSummary = () =>{
     fetch("http://127.0.0.1:8001/summary")
     .then((response) => response.json())
@@ -29,6 +40,7 @@ const fetchTransactions = () => {
   useEffect(() =>{
     fetchSummary();
     fetchTransactions();
+    fetchBudgetStatus();
   }, []);
   const addTransaction = () => {
     fetch("http://127.0.0.1:8001/transactions",{
@@ -58,7 +70,7 @@ const fetchTransactions = () => {
     });
   };
   const deleteTransaction = (transactionId) => {
-    fetch('http://127.0.0.1:8001/transactions/${transactionId}', {
+    fetch(`http://127.0.0.1:8001/transactions/${transactionId}`, {
       method: "DELETE"
     })
     .then((response) => response.json())
@@ -66,6 +78,58 @@ const fetchTransactions = () => {
       console.log("Deleted:",data);
       fetchSummary();
       fetchTransactions();
+    });
+  };
+  const startEdit = (transaction) =>{
+    setEditingId(transaction.id);
+    setAmount(transaction.amount);
+    setCategory(transaction.category);
+    setType(transaction.type);
+    setIsEditing(true);
+  };
+
+  const updateTransaction = () => {
+    fetch(`http://127.0.0.1:8001/transactions/${editingId}`,{
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        amount: Number(amount),
+        category: category,
+        type: type
+      })
+    })
+    .then ((response) => response.json())
+    .then((data) => {
+      console.log("Updated:",data);
+      fetchSummary();
+      fetchTransactions();
+      setAmount("");
+      setCategory("");
+      setType("expense");
+      setEditingId(null);
+      setIsEditing(false)
+    });
+  };
+  const addBudget = () => {
+    fetch("http://127.0.0.1:8001/budgets",{
+      method: "POST",
+      headers: {
+        "Content-Type" :"application/json"
+      },
+      body: JSON.stringify({
+        category: budgetCategory,
+        limit: Number(budgetLimit)
+      })
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Budget added:", data)
+      fetchBudgetStatus();
+      fetchSummary();
+      setBudgetCategory("");
+      setBudgetLimit("")
     });
   };
   return (
@@ -101,8 +165,8 @@ const fetchTransactions = () => {
       <option value="income">Income</option>
       <option value="savings">Savings</option>
     </select>
-    <button onClick={addTransaction}>
-      Add Transaction
+    <button onClick={isEditing ? updateTransaction: addTransaction}>
+      {isEditing ? "Update Transaction" : "Add Transaction"}
     </button>
 
     <h2>Transactions</h2>
@@ -114,12 +178,45 @@ const fetchTransactions = () => {
         <button onClick={() => deleteTransaction(transaction.id)}>
           Delete
         </button>
+        <button onClick={() => startEdit(transaction)}>
+          Edit
+          </button>
       </div>
 
     ))}
 
 
+  <h2> Set Budget </h2>
+  <input
+    type="text"
+    placeholder="Category"
+    value={budgetCategory}
+    onChange = {(e) => setBudgetCategory(e.target.value)}
+  />
+  <input
+      type="number"
+      placeholder="Budget Limit"
+      value={budgetLimit}
+      onChange={(e) => setBudgetLimit(e.target.value)}
+      />
+
+  <button onClick = {addBudget}>
+    Set Budget
+  </button>
+  <h2> Budget Status</h2>
+
+  {Object.entries(budgetStatus).map(([category,status]) => (
+    <div key={category}>
+      <p>
+        {category}: Spent ${status.spent}/ Budget ${status.budget}
+      </p>
+      <p> Remaining: ${status.remaining}</p>
+      <p>
+        Status: {status.over_budget ? "Over Budget" : "Under Budget"}
+      </p>
+    </div>
+  ))}
   </div>
-);
-}
+  );
+  }
 export default App;
