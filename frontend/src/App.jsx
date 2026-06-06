@@ -1,4 +1,6 @@
 import {useEffect, useState} from "react";
+import "./App.css";
+// import{PieChart, Pie, Cell,Tooltip, BarChart, Bar, XAxis, YAxis} from "recharts";
 
 function App(){
   const[summary, setSummary] = useState(null);
@@ -43,6 +45,10 @@ const fetchTransactions = () => {
     fetchBudgetStatus();
   }, []);
   const addTransaction = () => {
+    if(!amount||!category){
+      alert("Please enter an amount and category");
+      return;
+    }
     fetch("http://127.0.0.1:8001/transactions",{
       method: "POST",
       headers: {
@@ -113,6 +119,10 @@ const fetchTransactions = () => {
     });
   };
   const addBudget = () => {
+    if(!budgetCategory || !budgetLimit){
+      alert("Please enter a category and a limit");
+      return;
+    }
     fetch("http://127.0.0.1:8001/budgets",{
       method: "POST",
       headers: {
@@ -133,13 +143,13 @@ const fetchTransactions = () => {
     });
   };
   return (
-  <div>
+  <div className="container">
     <h1>Budget Tracker</h1>
-
+    <section className="card">
     {summary === null ? (
       <p>Loading summary...</p>
     ) : (
-      <div>
+      <div className="summary-card">
         <p>Total Income: ${summary.total_income}</p>
         <p>Total Expenses: ${summary.total_expenses}</p>
         <p>Total Savings: ${summary.total_savings}</p>
@@ -147,6 +157,9 @@ const fetchTransactions = () => {
         <p> Last Updated : {summary.last_updated}</p>
       </div>
     )}
+    </section>
+
+    <section className="card">
     <h2>Add Transaction</h2>
     <input
       type="number"
@@ -168,24 +181,31 @@ const fetchTransactions = () => {
     <button onClick={isEditing ? updateTransaction: addTransaction}>
       {isEditing ? "Update Transaction" : "Add Transaction"}
     </button>
+    </section>
 
+    <section className="card">
     <h2>Transactions</h2>
     {transactions.map((transaction) => (
-      <div key={transaction.id}>
+      <div className="transaction-card" key={transaction.id}>
         <p>
           {transaction.date} - {transaction.type} - {transaction.category} - ${transaction.amount}
         </p>
-        <button onClick={() => deleteTransaction(transaction.id)}>
+        <button 
+        className="delete-btn"
+        onClick={() => deleteTransaction(transaction.id)}>
           Delete
         </button>
-        <button onClick={() => startEdit(transaction)}>
+        <button 
+        className="edit-btn"
+        onClick={() => startEdit(transaction)}>
           Edit
           </button>
       </div>
 
     ))}
+    </section>
 
-
+  <section className="card">
   <h2> Set Budget </h2>
   <input
     type="text"
@@ -214,8 +234,10 @@ const fetchTransactions = () => {
       <p>
         Status: {status.over_budget ? "Over Budget" : "Under Budget"}
       </p>
-    </div>
+      </div>
   ))}
+  </section>
+
   </div>
   );
   }

@@ -15,13 +15,6 @@
             "date": "2026-05-21"
         },
         {
-            "amount": 432.0,
-            "category": "Food",
-            "type": "expense",
-            "id": "3018e62b-1bf7-44b2-b03e-3b624fce2b89",
-            "date": "2026-05-21"
-        },
-        {
             "amount": 100.0,
             "category": "Phone",
             "type": "savings",
@@ -43,24 +36,10 @@
             "date": "2026-05-22"
         },
         {
-            "amount": 50.0,
-            "category": "food",
-            "type": "expense",
-            "id": "07cd71bb-2a7d-4a27-affb-11ac465bda47",
-            "date": "2026-05-22"
-        },
-        {
             "amount": 25000.0,
             "category": "Phone Bill",
             "type": "savings",
             "id": "6144c7db-4478-4ca1-9a0b-c782c2953c8e",
-            "date": "2026-05-23"
-        },
-        {
-            "amount": 3.0,
-            "category": "food",
-            "type": "expense",
-            "id": "b0db9880-87c5-48c4-b243-3d77edd93737",
             "date": "2026-05-23"
         },
         {
@@ -69,10 +48,39 @@
             "type": "expense",
             "id": "47a42dbc-4236-4c04-bea8-acfbbbd94431",
             "date": "2026-05-25"
+        },
+        {
+            "amount": 30.0,
+            "category": "Food",
+            "type": "expense",
+            "id": "f43a5fcb-adf6-468f-b7d4-2d631c4316d2",
+            "date": "2026-05-27"
+        },
+        {
+            "amount": 23.0,
+            "category": "entertainment ",
+            "type": "expense",
+            "id": "27e5b353-1be9-4c2e-96cb-7c595860a49f",
+            "date": "2026-05-29"
+        },
+        {
+            "amount": 5678.0,
+            "category": "buns",
+            "type": "expense",
+            "id": "a300ed31-a200-47e3-92b4-3920f03727bd",
+            "date": "2026-05-27"
+        },
+        {
+            "amount": 250.0,
+            "category": "huzz",
+            "type": "savings",
+            "id": "c51c8799-a1ef-4615-853e-554b685f9576",
+            "date": "2026-05-29"
         }
     ],
     "budgets": {
         "60": 0.0,
-        "Food": 50.0
+        "Food": 60.0,
+        "Entertainment": 50.0
     }
 }
